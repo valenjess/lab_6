@@ -127,6 +127,47 @@ void AceleraY(float Distance, float angulo){
 
 }
 
+float Velo_X(float VeloIni, float AcelX, float tiempo){
+
+    float VeloX = 0;
+
+    VeloX = VeloIni + AcelX*tiempo;
+    cout<<VeloX;
+    return VeloX;
+
+}
+
+float Velo_Y(float VeloIni, float AcelY, float tiempo){
+
+    float VeloY = 0;
+
+    VeloY = VeloIni + AcelY*tiempo;
+    cout<<VeloY;
+    return VeloY;
+
+}
+
+float Pos_X(float PosIniX, float VeloX, float AcelX,float tiempo){
+
+    float PosX = 0;
+    PosX = PosIniX + VeloX*tiempo +(AcelX*(pow(tiempo,2)))/2;
+
+    cout<<"-x-"<<PosX;
+    return PosX;
+
+}
+
+float Pos_Y(float PosIniY, float VeloY, float AcelY,float tiempo){
+
+    float PosY = 0;
+    PosY = PosIniY + VeloY*tiempo +(AcelY*(pow(tiempo,2)))/2;
+
+    cout<<"-y-"<<PosY;
+    return PosY;
+
+}
+
+
 Universe::~Universe()
 {
     delete ui;
