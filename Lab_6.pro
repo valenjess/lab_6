@@ -10,9 +10,11 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
+    planeta.cpp \
     universe.cpp
 
 HEADERS += \
+    planeta.h \
     universe.h
 
 FORMS += \

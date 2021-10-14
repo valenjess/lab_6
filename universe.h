@@ -1,5 +1,7 @@
 #ifndef UNIVERSE_H
 #define UNIVERSE_H
+#include <planeta.h>
+#include <QDebug>
 //"../lab info II/lab_6/BD/data.txt"
 
 #include <QMainWindow>

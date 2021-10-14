@@ -2,14 +2,27 @@
 #include "ui_universe.h"
 
 
+
 Universe::Universe(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Universe)
 {
     ui->setupUi(this);
+
     scene = new QGraphicsScene;
 
     lectura();
+
+    Planeta *planeta1 = new Planeta(Posiciones[4],Posiciones[5],Velocidades[4],Velocidades[5]);
+    qDebug()<<(planeta1->getVeloIniX());
+
+
+    Planeta *planeta2 = new Planeta(Posiciones[0],Posiciones[1],Velocidades[0],Velocidades[1]);
+    qDebug()<<(planeta2->getVeloIniX());
+
+
+    /*
+
 
     QPen pen1(Qt::yellow, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
     QPen pen2(Qt::green, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
@@ -20,7 +33,7 @@ Universe::Universe(QWidget *parent)
 
     ui->graphicsView->setScene(scene);
     ui->graphicsView->showMinimized();
-
+   */
 }
 
 void Universe::lectura()
@@ -85,88 +98,6 @@ void Universe::lectura()
     file.close();
 
 }
-
-
-float Cal_Distance(float Xpla,float Ypla, float XSun, float YSun )
-{
-    float Distance = 0;
-
-    Distance = sqrt(pow((XSun-Xpla),2)+pow((YSun-Ypla),2));
-
-    return Distance;
-
-}
-
-float Angulo(float Xpla,float Ypla, float XSun, float YSun){
-
-    float angulo = 0;
-    angulo = atan((YSun-Ypla)/(XSun-Xpla))*57,2958;
-
-    return angulo;
-}
-
-void AceleraX(float Distance, float angulo){
-
-    float AcelX = 0;
-    float Gravity = 1;
-    float MasaSun = 70000;
-
-    AcelX = ((Gravity*MasaSun)/(pow(Distance,2)))*cos(angulo);
-    cout<<AcelX;
-
-}
-
-void AceleraY(float Distance, float angulo){
-
-    float AcelX = 0;
-    float Gravity = 1;
-    float MasaSun = 70000;
-
-    AcelX = ((Gravity*MasaSun)/(pow(Distance,2)))*cos(angulo);
-    cout<<AcelX;
-
-}
-
-float Velo_X(float VeloIni, float AcelX, float tiempo){
-
-    float VeloX = 0;
-
-    VeloX = VeloIni + AcelX*tiempo;
-    cout<<VeloX;
-    return VeloX;
-
-}
-
-float Velo_Y(float VeloIni, float AcelY, float tiempo){
-
-    float VeloY = 0;
-
-    VeloY = VeloIni + AcelY*tiempo;
-    cout<<VeloY;
-    return VeloY;
-
-}
-
-float Pos_X(float PosIniX, float VeloX, float AcelX,float tiempo){
-
-    float PosX = 0;
-    PosX = PosIniX + VeloX*tiempo +(AcelX*(pow(tiempo,2)))/2;
-
-    cout<<"-x-"<<PosX;
-    return PosX;
-
-}
-
-float Pos_Y(float PosIniY, float VeloY, float AcelY,float tiempo){
-
-    float PosY = 0;
-    PosY = PosIniY + VeloY*tiempo +(AcelY*(pow(tiempo,2)))/2;
-
-    cout<<"-y-"<<PosY;
-    return PosY;
-
-}
-
 
 Universe::~Universe()
 {
